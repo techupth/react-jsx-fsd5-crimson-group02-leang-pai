@@ -1,5 +1,12 @@
 import "./App.css";
 
+const articleStyles = {
+  container: "article",
+  title: "article-title",
+  body: "article-body",
+  link: "article-link",
+};
+
 function getCurrentDateTime() {
   const now = new Date();
   const year = now.getFullYear();
@@ -8,30 +15,35 @@ function getCurrentDateTime() {
   const hours = String(now.getHours()).padStart(2, "0");
   const minutes = String(now.getMinutes()).padStart(2, "0");
   const seconds = String(now.getSeconds()).padStart(2, "0");
+
   return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
 }
 
 function IntroSection() {
   return (
-    <div>
-      <h3>TechUp Thailand</h3>
-      <p>เตรียมพบกับหลักสูตรปั้นคุณเป็น Software Developer ภายใน 4 เดือน</p>
-      <a href="https://www.techupth.com/" target="blank">
+    <div className={articleStyles.container}>
+      <h3 className={articleStyles.title}>TechUp Thailand</h3>
+      <p className={articleStyles.body}>
+        เตรียมพบกับหลักสูตรปั้นคุณเป็น Software Developer ภายใน 4 เดือน
+      </p>
+      <a href="https://www.techupth.com/" className={articleStyles.link} target="blank">
         techupth.com
       </a>
-      {/* ให้แสดงวันเวลาด้วย Function `getCurrentDateTime` ที่กำหนดไว้ให้ */}
+      <div className="bootcamp-start-time">
+        วันเวลาเริ่มหลักสูตร คือ {getCurrentDateTime()}
+      </div>
     </div>
   );
 }
 
 function LoginForm() {
   return (
-    <div class="login-container">
-      <form class="login-form">
+    <div className="login-container">
+      <form className="login-form">
         <h2>Login</h2>
-        <label for="username">Username</label>
+        <label htmlFor="username">Username</label>
         <input type="text" id="username" name="username" />
-        <label for="password">Password</label>
+        <label htmlFor="password">Password</label>
         <input type="password" id="password" name="password" />
         <button type="submit">Login</button>
       </form>
